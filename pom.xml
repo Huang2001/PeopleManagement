@@ -20,6 +20,8 @@
     <spring-version>5.3.14</spring-version>
     <jdbc-version>8.0.26</jdbc-version>
     <lombok-version>1.18.20</lombok-version>
+    <servlet-version>3.1.0</servlet-version>
+    <mybatis-version>3.5.6</mybatis-version>
   </properties>
 
   <dependencies>
@@ -46,6 +48,28 @@
     </dependency>
 
 
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet-version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.6</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis-version}</version>
+    </dependency>
+
+
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -53,6 +77,14 @@
       <version>${spring-version}</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.2.6</version>
+    </dependency>
+
 
 
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
