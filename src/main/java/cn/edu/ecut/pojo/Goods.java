@@ -5,11 +5,14 @@ import lombok.Data;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+/**
+ * @author haunghl
+ */
 @Data
 public class Goods
 {
     private int id;
-    private String adress;
+    private String address;
     private String phoneNumber;
     private String urgentGoods;
     private String isComplete;

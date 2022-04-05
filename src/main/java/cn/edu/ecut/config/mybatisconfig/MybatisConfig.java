@@ -1,5 +1,6 @@
 package cn.edu.ecut.config.mybatisconfig;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
@@ -16,20 +17,20 @@ import javax.sql.DataSource;
 @Import(DruidDataSourceConfig.class)
 public class MybatisConfig {
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource)
-    {
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        System.out.println("create factory!");
         SqlSessionFactoryBean factoryBean=new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
-        ClassPathResource resource=new ClassPathResource("datasource-config.xml");
+        ClassPathResource resource=new ClassPathResource("mybatis-test.xml");
         factoryBean.setConfigLocation(resource);
-        return factoryBean;
+        return factoryBean.getObject();
     }
 
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer()
     {
         MapperScannerConfigurer configurer=new MapperScannerConfigurer();
-        configurer.setBasePackage("cn.edu.ecut.*");
+        configurer.setBasePackage("cn.edu.ecut.mapper");
         return configurer;
     }
 }

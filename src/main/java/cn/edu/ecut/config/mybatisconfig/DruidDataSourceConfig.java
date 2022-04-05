@@ -4,8 +4,6 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.apache.ibatis.io.Resources;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -16,10 +14,10 @@ import java.util.Properties;
  */
 public class DruidDataSourceConfig
 {
-    @Bean
-    public DataSource dataSource() throws Exception
+    @Bean(initMethod = "init",destroyMethod = "close")
+    public DruidDataSource dataSource() throws Exception
     {
-        Properties properties=Resources.getResourceAsProperties("datasource.properties");
-        return DruidDataSourceFactory.createDataSource(properties);
+        Properties properties=Resources.getResourceAsProperties("datasource-config.properties");
+        return (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
     }
 }

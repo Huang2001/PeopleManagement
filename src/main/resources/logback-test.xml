@@ -3,7 +3,7 @@
         <file>project.log</file>
         <append>false</append>
         <encoder>
-            <pattern>%d %-5level [%thread] %logger{0}: %msg%n</pattern>
+            <pattern>%highlight(%d %-5level [%thread] %logger{0}: %msg%n)</pattern>
         </encoder>
     </appender>
 
