@@ -27,7 +27,7 @@ public class MybatisConfig {
         factoryBean.setConfigLocation(resource);
         PageInterceptor interceptor=new PageInterceptor();
         Properties properties=new Properties();
-        properties.setProperty("dialect","mysql");
+        properties.setProperty("helperDialect","mysql");
         interceptor.setProperties(properties);
         factoryBean.setPlugins(interceptor);
         return factoryBean.getObject();
