@@ -3,6 +3,7 @@ package cn.edu.ecut.controller;
 import cn.edu.ecut.mapper.PeopMapper;
 import cn.edu.ecut.pojo.People;
 import cn.edu.ecut.pojo.ResponseEntity;
+import cn.edu.ecut.pojo.exceptions.FieldNotMatchException;
 import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import cn.edu.ecut.service.ItemsService;
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ import java.util.*;
 @RequestMapping("/item")
 public class ItemController
 {
-    private final String TITLESTRING="title";
+    private final String TITLE_FIELD_NAME="title";
     private final String ITEM_NAME="item_name";
     private final String ITEM_TYPE="item_type";
 
@@ -43,12 +44,12 @@ public class ItemController
     @RequestMapping(value = "addItem",consumes = "application/json")
     @ResponseBody
     public ResponseEntity<String> addItem(@RequestBody Map<String,String> items) throws NotFoundSupportedResponseEnumException {
-        String titleString=items.get(TITLESTRING);
+        String titleString=items.get(TITLE_FIELD_NAME);
         if(titleString==null||items.size()<=1)
         {
             return new ResponseEntity<>(1,"未上传title或item",null);
         }
-        items.remove(TITLESTRING);
+        items.remove(TITLE_FIELD_NAME);
         List<Map<String,String>> addData=new ArrayList<>();
         Map<String,String> map;
         for(Map.Entry<String,String> entry:items.entrySet())
@@ -92,9 +93,19 @@ public class ItemController
      */
     @RequestMapping(value = "renderItems",consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<String> renderItems(@RequestBody Map<String,String> renderItem, @SessionAttribute People people)
-    {
-
+    public ResponseEntity<String> renderItems(@RequestBody Map<String,String> renderItem, @SessionAttribute People people) throws NotFoundSupportedResponseEnumException, FieldNotMatchException {
+        String tableName=null;
+        int userId;
+        String userName=null;
+        if((tableName=renderItem.get(TITLE_FIELD_NAME))!=null&&StringUtils.hasLength(tableName))
+        {
+            return new ResponseEntity<String>(1,"没有@param:tilte",null);
+        }
+        renderItem.remove(TITLE_FIELD_NAME);
+        userId=people.getId();
+        userName=people.getUsername();
+        itemsService.renderItem(tableName,userId,userName,renderItem);
+        return new ResponseEntity<>(200,"提交数据成功！",null);
     }
 
 

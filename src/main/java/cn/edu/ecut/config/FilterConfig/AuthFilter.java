@@ -9,6 +9,7 @@ import java.io.IOException;
 public class AuthFilter implements Filter
 {
 
+    private static final String PEOPLE_ATTRIBUTE_NAME="people";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -19,7 +20,7 @@ public class AuthFilter implements Filter
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest re=(HttpServletRequest) request;
         HttpSession session=re.getSession(false);
-        if(session==null)
+        if(session==null||session.getAttribute(PEOPLE_ATTRIBUTE_NAME)!=null)
         {
             request.getRequestDispatcher("")
         }
