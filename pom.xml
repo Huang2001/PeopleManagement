@@ -63,12 +63,11 @@
       <version>${spring-version}</version>
     </dependency>
 
-
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
     <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-web</artifactId>
-      <version>${spring-security}</version>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-websocket</artifactId>
+      <version>${spring-version}</version>
     </dependency>
 
 
@@ -159,6 +158,15 @@
       <version>2.13.1</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.reactivestreams/reactive-streams -->
+    <dependency>
+      <groupId>org.reactivestreams</groupId>
+      <artifactId>reactive-streams</artifactId>
+      <version>1.0.3</version>
+    </dependency>
+
+
+
 
     <dependency>
       <groupId>junit</groupId>
@@ -175,7 +183,19 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webflux -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webflux</artifactId>
+      <version>${spring-version}</version>
+    </dependency>
 
+
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.1.4</version>
+    </dependency>
 
   </dependencies>
 

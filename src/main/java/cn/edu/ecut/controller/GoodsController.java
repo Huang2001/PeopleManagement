@@ -1,7 +1,7 @@
 package cn.edu.ecut.controller;
 
 import cn.edu.ecut.pojo.Goods;
-import cn.edu.ecut.pojo.NotFoundSupportedResponseEnumException;
+import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import cn.edu.ecut.pojo.ResponseEntity;
 import cn.edu.ecut.service.mapperimp.GoodsMapperImp;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class GoodsController
 
     private Logger logger= LoggerFactory.getLogger(GoodsController.class);
 
-    @PostMapping("/requGoods")
+    @PostMapping(value = "/requGoods",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ResponseEntity<String> requGoods(@RequestBody Goods goods) throws NotFoundSupportedResponseEnumException
     {
@@ -51,6 +51,7 @@ public class GoodsController
             entity=new ResponseEntity<>(1,"未添加联系方式！",null);
             return entity;
         }
+        entity=new ResponseEntity<>(200,null,null);
         goods.setRequestTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
         goodsMapperImp.addGoods(goods);
         return entity;
@@ -61,7 +62,7 @@ public class GoodsController
     /*completeFlag的可选值为:
         "完成","未完成","all";*/
 
-    @GetMapping("queryGoods")
+    @GetMapping(value = "/queryGoods",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ResponseEntity<List<Goods>> queryGoods(@RequestParam("completeFlag") String completeFlag) throws NotFoundSupportedResponseEnumException {
         List<Goods> goodsList=null;

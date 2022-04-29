@@ -5,7 +5,7 @@
 <configuration>
 
     <settings>
-        <setting name="cacheEnabled" value="false"/><!--是否开启全局缓存-->
+        <setting name="cacheEnabled" value="true"/><!--是否开启全局缓存-->
         <setting name="lazyLoadingEnabled" value="false"/><!--是否开启全局的懒加载 当有关联查询时 只是按需加载 关联部分对象的数据不及时加载-->
         <setting name="aggressiveLazyLoading" value="false"/><!--积极的懒加载：TRUE：当懒加载对象（pojo)中的任何一个属性被调用都导致所有属性的加载 FALSE：只是按需加载-->
         <setting name="autoMappingBehavior" value="FULL"/><!--自动映射级别：NONE（不做自动映射处理）, PARTIAL（当没有内嵌的resultMap时自动映射）, FULL（即使有复杂的映射也会自动映射）-->
@@ -16,6 +16,8 @@
         <setting name="localCacheScope" value="STATEMENT"/><!--缓存策略：SESSION（默认：会话缓存，只有在会话阶段有效） | STATEMENT（每个语句都会缓存）-->
         <setting name="logImpl" value="SLF4J"/>
     </settings>
+
+
 
     <!--<environments default="test">
         <environment id="test">
@@ -31,6 +33,9 @@
 
     <mappers>
         <mapper resource="mapper/GoodsMapper.xml"/>
+        <mapper resource="mapper/MessageMapper.xml"/>
+        <mapper resource="mapper/PeopMapper.xml"/>
+        <mapper resource="mapper/ItemMapper.xml"/>
     </mappers>
 
 </configuration>
