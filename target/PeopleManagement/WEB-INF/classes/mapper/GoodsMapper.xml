@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ecut.mapper.GoodsMapper">
+    <insert id="addGoods" parameterType="cn.edu.ecut.pojo.Goods" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into needgoods(address,phone_number,urgent_goods,is_complete,request_time)
+        values(#{address},#{phoneNumber},#{urgentGoods},#{isComplete},#{requestTime})
+    </insert>
+
+    <select id="queryGoods" parameterType="string" resultType="cn.edu.ecut.pojo.Goods">
+        select id,address,phone_number,urgent_goods,is_complete,request_time,complete_time
+        from needgoods
+        <where>
+            <if test="completeFlag != null">
+                is_complete=#{completeFlag}
+            </if>
+        </where>
+        order by request_time asc
+    </select>
+</mapper>

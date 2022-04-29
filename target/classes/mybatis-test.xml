@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="cacheEnabled" value="false"/><!--是否开启全局缓存-->
+        <setting name="lazyLoadingEnabled" value="false"/><!--是否开启全局的懒加载 当有关联查询时 只是按需加载 关联部分对象的数据不及时加载-->
+        <setting name="aggressiveLazyLoading" value="false"/><!--积极的懒加载：TRUE：当懒加载对象（pojo)中的任何一个属性被调用都导致所有属性的加载 FALSE：只是按需加载-->
+        <setting name="autoMappingBehavior" value="FULL"/><!--自动映射级别：NONE（不做自动映射处理）, PARTIAL（当没有内嵌的resultMap时自动映射）, FULL（即使有复杂的映射也会自动映射）-->
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/><!--自动映射到未知的属性时的处理：NONE（默认：不做处理）, WARNING（发出警告）, FAILING（抛出异常）-->
+        <setting name="defaultExecutorType" value="REUSE"/><!--SIMPLE REUSE BATCH Configures the default executor. SIMPLE executor does nothing special. REUSE executor reuses prepared statements. BATCH executor reuses statements and batches updates.-->
+        <setting name="defaultStatementTimeout" value="6"/><!--调用mapper时，驱动程序等待数据库返回数据的时间（秒）-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/><!--是否开启驼峰命名 默认FALSE-->
+        <setting name="localCacheScope" value="STATEMENT"/><!--缓存策略：SESSION（默认：会话缓存，只有在会话阶段有效） | STATEMENT（每个语句都会缓存）-->
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
+    <typeAliases>
+        <package name="cn.edu.ecut.pojo"/>
+    </typeAliases>
+    <!--<environments default="test">
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://101.34.207.32:3306/stu_mybatis?connectTimeout=20000"/>
+                <property name="username" value="root"/>
+                <property name="password" value="huanghengliang2001"/>
+            </dataSource>
+        </environment>
+    </environments>-->
+
+    <mappers>
+        <mapper resource="mapper/GoodsMapper.xml"/>
+        <mapper resource="mapper/PeopleMapper.xml"/>
+    </mappers>
+
+</configuration>
