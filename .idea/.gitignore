@@ -9,4 +9,5 @@
 target/
 /test
 *.log
+/target
 *.jar

@@ -1,6 +1,6 @@
 package cn.edu.ecut.pojo;
 
-import lombok.Data;
+import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import org.springframework.lang.Nullable;
 
 public enum ResponseEnum

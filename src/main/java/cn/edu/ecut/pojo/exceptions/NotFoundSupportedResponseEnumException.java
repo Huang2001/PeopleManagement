@@ -1,4 +1,4 @@
-package cn.edu.ecut.pojo;
+package cn.edu.ecut.pojo.exceptions;
 
 public class NotFoundSupportedResponseEnumException extends Exception
 {

@@ -3,7 +3,7 @@
         <file>project.log</file>
         <append>false</append>
         <encoder>
-            <pattern>%highlight(%d %-5level [%thread] %logger{0}: %msg%n)</pattern>
+            <pattern>%highlight(%n[%d{yyyy-MM-dd HH:mm:ss,sss}] [%thread]  %logger{0}  [%-5level] %replace(%replace(%caller{1}){'Caller\+0\s+', ' '}){'\s', ' '}%msg)</pattern>
         </encoder>
     </appender>
 
@@ -11,7 +11,7 @@
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>[%thread] %-5level %logger{35} - %msg %n</pattern>
+            <pattern>%highlight(%n[%d{yyyy-MM-dd HH:mm}]  [%-5level] %replace(%replace(%caller{1}){'Caller\+0\s+', ' '}){'\s', ' '}%msg)</pattern>
         </encoder>
     </appender>
 
