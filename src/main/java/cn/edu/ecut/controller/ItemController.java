@@ -1,6 +1,7 @@
 package cn.edu.ecut.controller;
 
 import cn.edu.ecut.mapper.PeopMapper;
+import cn.edu.ecut.pojo.People;
 import cn.edu.ecut.pojo.ResponseEntity;
 import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import cn.edu.ecut.service.ItemsService;
@@ -16,8 +17,8 @@ import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
-@RequestMapping("/people")
-public class PeopleController
+@RequestMapping("/item")
+public class ItemController
 {
     private final String TITLESTRING="title";
     private final String ITEM_NAME="item_name";
@@ -29,7 +30,7 @@ public class PeopleController
     @Resource(name = "peopMapperImp")
     private PeopMapper peopMapper;
 
-    private Logger logger= LoggerFactory.getLogger(PeopleController.class);
+    private Logger logger= LoggerFactory.getLogger(ItemController.class);
 
 
     /**
@@ -42,12 +43,12 @@ public class PeopleController
     @RequestMapping(value = "addItem",consumes = "application/json")
     @ResponseBody
     public ResponseEntity<String> addItem(@RequestBody Map<String,String> items) throws NotFoundSupportedResponseEnumException {
-       String titleString=items.get(TITLESTRING);
-       if(titleString==null||items.size()<=1)
-       {
-           return new ResponseEntity<>(1,"未上传title或item",null);
-       }
-       items.remove(TITLESTRING);
+        String titleString=items.get(TITLESTRING);
+        if(titleString==null||items.size()<=1)
+        {
+            return new ResponseEntity<>(1,"未上传title或item",null);
+        }
+        items.remove(TITLESTRING);
         List<Map<String,String>> addData=new ArrayList<>();
         Map<String,String> map;
         for(Map.Entry<String,String> entry:items.entrySet())
@@ -57,8 +58,8 @@ public class PeopleController
             map.put(ITEM_TYPE,entry.getValue());
             addData.add(map);
         }
-       itemsService.addItems(titleString,addData);
-       return new ResponseEntity<>(200,"添加成功！",null);
+        itemsService.addItems(titleString,addData);
+        return new ResponseEntity<>(200,"添加成功！",null);
     }
 
 
@@ -91,7 +92,7 @@ public class PeopleController
      */
     @RequestMapping(value = "renderItems",consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<String> renderItems(@RequestBody Map<String,String> renderItem, @SessionAttribute )
+    public ResponseEntity<String> renderItems(@RequestBody Map<String,String> renderItem, @SessionAttribute People people)
     {
 
     }
