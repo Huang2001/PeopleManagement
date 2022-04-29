@@ -16,7 +16,9 @@
         <setting name="localCacheScope" value="STATEMENT"/><!--缓存策略：SESSION（默认：会话缓存，只有在会话阶段有效） | STATEMENT（每个语句都会缓存）-->
         <setting name="logImpl" value="SLF4J"/>
     </settings>
-
+    <typeAliases>
+        <package name="cn.edu.ecut.pojo"/>
+    </typeAliases>
     <!--<environments default="test">
         <environment id="test">
             <transactionManager type="JDBC"/>
@@ -31,6 +33,7 @@
 
     <mappers>
         <mapper resource="mapper/GoodsMapper.xml"/>
+        <mapper resource="mapper/PeopleMapper.xml"/>
     </mappers>
 
 </configuration>
