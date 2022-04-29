@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ecut.mapper.PeopMapper">
+    <insert id="addTitle" parameterType="cn.edu.ecut.pojo.Title" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into coltitle(title_name,date)
+        values(#{title.titelName},#{title.date})
+    </insert>
+
+    <insert id="addItems">
+        insert into colitem(title_id,title_name,title_type)
+        <foreach collection="items" separator="," item="item">
+            values(#{id},#{item.itemName},#{itemType})
+        </foreach>
+    </insert>
+
+    <select id="queryTitles" resultType="cn.edu.ecut.pojo.Title">
+        select id,title_name,date
+        from coltitle
+    </select>
+
+    <select id="queryItems" resultType="map">
+        select item_name,item_type
+        from colitem
+        where title_id = #{id}
+    </select>
+</mapper>

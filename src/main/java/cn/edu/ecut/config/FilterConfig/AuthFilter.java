@@ -22,7 +22,7 @@ public class AuthFilter implements Filter
         HttpSession session=re.getSession(false);
         if(session==null||session.getAttribute(PEOPLE_ATTRIBUTE_NAME)!=null)
         {
-            request.getRequestDispatcher("")
+            request.getRequestDispatcher("");
         }
     }
 
