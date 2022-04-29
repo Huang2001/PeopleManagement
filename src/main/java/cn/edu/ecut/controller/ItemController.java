@@ -14,7 +14,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @Controller
@@ -22,8 +21,8 @@ import java.util.*;
 public class ItemController
 {
     private final String TITLE_FIELD_NAME="title";
-    private final String ITEM_NAME="item_name";
-    private final String ITEM_TYPE="item_type";
+    private final String ITEM_NAME="itemName";
+    private final String ITEM_TYPE="itemType";
 
     @Autowired
     private ItemsService itemsService;
@@ -47,7 +46,7 @@ public class ItemController
         String titleString=items.get(TITLE_FIELD_NAME);
         if(titleString==null||items.size()<=1)
         {
-            return new ResponseEntity<>(1,"未上传title或item",null);
+            return new ResponseEntity<>(1,"未上传param:title或item",null);
         }
         items.remove(TITLE_FIELD_NAME);
         List<Map<String,String>> addData=new ArrayList<>();

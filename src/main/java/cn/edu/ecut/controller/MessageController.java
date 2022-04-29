@@ -23,9 +23,9 @@ public class MessageController
 
     @PostMapping(value = "queryMsg",produces = "application/*;charset=UTF-8")
     @ResponseBody
-    public ResponseEntity queryMsg(HttpSession httpSession) throws NotFoundSupportedResponseEnumException {
+    public ResponseEntity<List<String>> queryMsg(HttpSession httpSession) throws NotFoundSupportedResponseEnumException {
        String account= (String) httpSession.getAttribute("account");
-       ResponseEntity responseEntity;
+       ResponseEntity<List<String>> responseEntity;
        if(account==null)
        {
            log.warn("会话中不包含account参数，请求失败！");

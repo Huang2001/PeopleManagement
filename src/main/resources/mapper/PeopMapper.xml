@@ -20,7 +20,6 @@
             </choose>
         </foreach>
         )
-
         engine=InnoDB
     </update>
 

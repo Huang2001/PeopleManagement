@@ -23,9 +23,9 @@ public class ItemMapperImp implements ItemMapper
     }
 
     @Override
-    public int addItem(int titleId, List<Map<String, String>> items)
+    public int addItems(int titleId, List<Map<String, String>> items)
     {
-        return itemMapper.addItem(titleId,items);
+        return itemMapper.addItems(titleId,items);
     }
 
 

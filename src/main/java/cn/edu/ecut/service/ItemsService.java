@@ -31,11 +31,8 @@ public class ItemsService
         Title title=new Title(titleName, Calendar.getInstance().getTimeInMillis());
         itemMapper.addTitle(title);
         int titleId=title.getId();
-        if(titleId!=0)
-        {
-            itemMapper.addItem(titleId,items);
-            peopMapper.createTable(titleName,items);
-        }
+        itemMapper.addItems(titleId,items);
+        peopMapper.createTable(titleName,items);
     }
 
 
@@ -49,7 +46,7 @@ public class ItemsService
         renderData.add(userName);
         renderData.add(new Timestamp(Calendar.getInstance().getTimeInMillis()));
         List<Map<String,String>> fields=peopMapper.descTable(tableName);
-        for(int var=4;var<fields.size();var++)
+        for(int var=3;var<fields.size();var++)
         {
             Map<String,String> map=fields.get(var);
             String itemValue=data.get(map.get("Field"));

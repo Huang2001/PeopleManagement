@@ -13,7 +13,7 @@ import java.util.Map;
 public interface ItemMapper
 {
     public int addTitle(@Param("title")Title title);
-    public int addItem(@Param("id")int titleId,@Param("items") List<Map<String,String>> items);
+    public int addItems(@Param("id")int titleId,@Param("items") List<Map<String,String>> items);
     public List<Title> queryTitles();
     public List<Map<String,String>> queryItems(@Param("id")int titleId);
 }
