@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MessageMapper">
+    <select id="queryMsg" resultType="string" parameterType="String">
+        select msg from message
+        where id >= (
+            select index from msgindex
+            where account = #{account}
+            )
+    </select>
+
+    
+    <insert id="publishMsg" parameterType="string">
+        insert into message(msg)
+        values(#{msg})
+    </insert>
+</mapper>

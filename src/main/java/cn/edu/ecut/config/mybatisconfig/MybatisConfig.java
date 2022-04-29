@@ -4,6 +4,8 @@ import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -18,11 +20,14 @@ import java.util.Properties;
 @Configuration
 @Import(DruidDataSourceConfig.class)
 public class MybatisConfig {
+
+    @Autowired
     @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
         System.out.println("create factory!");
         SqlSessionFactoryBean factoryBean=new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
+        //factoryBean.setTypeAliasesPackage("cn.edu.ecut.mapper");
         ClassPathResource resource=new ClassPathResource("mybatis-test.xml");
         factoryBean.setConfigLocation(resource);
         PageInterceptor interceptor=new PageInterceptor();
@@ -40,4 +45,5 @@ public class MybatisConfig {
         configurer.setBasePackage("cn.edu.ecut.mapper");
         return configurer;
     }
+
 }
