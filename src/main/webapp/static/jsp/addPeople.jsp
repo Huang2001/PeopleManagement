@@ -53,7 +53,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">首页</a>
+                <a class="nav-link" href="../index.jsp">首页</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#"
