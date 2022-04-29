@@ -33,8 +33,10 @@ public class ItemController
 
 
     /**
+     * 管理员创建一个需要收集的表项，表中包含表的标题，还有需要收集的各项内容，内容的形式为   内容名称：内容类型   其中类型包括”text"和“image"
+     *  @param items 包含需要添加的收集项目{itemName:itemType}，必须包含{title:titleName}这一项
      * warn:ITEM_TYPE 的值需要验证是否符合数据库枚举的内容；
-     * @param items 包含需要添加的收集项目{itemName:itemType}，必须包含{title:titleName}这一项
+     *
      * @return
      * @throws NotFoundSupportedResponseEnumException
      */
@@ -54,6 +56,7 @@ public class ItemController
 
 
     /**
+     * 前端查询表的数据时，需要动态生成表格，所以需要在这里查询表的格式（各个字段中的内容）
      * 根据{title}表名查询表的结构即需要收集的项
      * @param tableName
      * @return
