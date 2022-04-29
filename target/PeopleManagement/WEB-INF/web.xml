@@ -9,7 +9,7 @@
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring/applicationContext-hhl.xml</param-value>
+    <param-value>classpath:applicationContext-hhl.xml</param-value>
   </context-param>
   <welcome-file-list>
     <welcome-file>static/jsp/login.jsp</welcome-file>
@@ -20,7 +20,7 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring/applicationContext-servlet.xml</param-value>
+      <param-value>classpath:applicationContext-servlet.xml</param-value>
     </init-param>
   </servlet>
   <filter>

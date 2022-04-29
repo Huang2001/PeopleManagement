@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ecut.mapper.PeopleMapper">
+<select id="queryPeople" resultType="People">
+    select * from people where userCode=#{userCode} AND userPassword=#{userPassword}
+</select>
+    <select id="queryPeopleList" resultType="People">
+        select * from people
+            <trim prefix="where" prefixOverrides="and | or">
+                    <if test="username!=null and username!=''">
+                        AND username like CONCAT ('%',#{username},'%')
+                    </if>
+                    <if test="address != null and address !=''">
+                        AND address like  CONCAT ('%',#{address},'%')
+                    </if>
+                    <if test="state!=null and state !=''">
+                        AND state=#{state}
+                    </if>
+                    <if test="gender!=null and gender!=''">
+                        AND gender=#{gender}
+                    </if>
+            </trim>
+    </select>
+    <delete id="deletePeopleById" parameterType="int">
+        delete from people where id=#{id}
+    </delete>
+    <select id="queryPeopleById" resultType="People" parameterType="int">
+        select  * from people where id=#{id}
+    </select>
+    <update id="updatePeople" parameterType="People">
+        update people
+        set userCode=#{userCode},userPassword=#{userPassword},gender=#{gender},age=#{age},address=#{address},phoneNumber=#{phoneNumber},username=#{username},applicationTime=#{applicationTime},roleName=#{roleName},state=#{state}
+        where id=#{id}
+    </update>
+    <insert id="addPeople" parameterType="People">
+        insert into people (userCode,userPassword,gender,age,address,phoneNumber,username,applicationTime,roleName,state)
+        values(#{userCode},#{userPassword},#{gender},#{age},#{address},#{phoneNumber},#{username},#{applicationTime},#{roleName},#{state})
+    </insert>
+    <select id="queryPeopleByCode" resultType="People">
+        select * from people where userCode=#{userCode}
+    </select>
+</mapper>
