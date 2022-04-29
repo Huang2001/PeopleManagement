@@ -7,5 +7,7 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 /test
-*.log
 /target
+*.log
+*.class
+*.jar
