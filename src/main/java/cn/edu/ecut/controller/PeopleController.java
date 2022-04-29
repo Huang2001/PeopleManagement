@@ -23,7 +23,11 @@ public class PeopleController {
     @Resource
     private PeopleService peopleService;
     @RequestMapping("/goMain")
-    public String goMain(){
+    public String goMain(Model model){
+
+
+        People people=peopleService.queryPeople("admin","123456");
+        model.addAttribute("people",people);
         return "main";
     }
     @RequestMapping("/goPeopleView")
@@ -71,7 +75,7 @@ public class PeopleController {
             return "redirect:/people/goPeopleView";
         }
         else {
-            model.addAttribute("msg","用户名已存在");
+            model.addAttribute("msg","用户名已经存在");
             return "addPeople";
         }
     }
@@ -87,7 +91,7 @@ public class PeopleController {
         }
         else {
             model.addAttribute("msg","用户已存在");
-            return "login";
+            return "register";
         }
     }
 }

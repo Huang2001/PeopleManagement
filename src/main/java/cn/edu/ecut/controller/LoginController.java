@@ -24,7 +24,11 @@ public class LoginController {
     @RequestMapping("/login.do")
     public String login(String userCode, String userPassword, Model model){
         People people=peopleService.queryPeople(userCode,userPassword);
-        if (people.getUsername().equals("管理员")) {
+        if(people==null){
+            model.addAttribute("msg","用户名或密码错误");
+            return "login";
+        }
+        else if (people.getUsername().equals("管理员")) {
             model.addAttribute("people",people);
             return "main";
         }
