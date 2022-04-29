@@ -14,6 +14,10 @@ import java.util.*;
 public class ItemsService
 {
 
+
+    private final String ITEM_NAME="itemName";
+    private final String ITEM_TYPE="itemType";
+
     @Resource(name = "itemMapperImp")
     private ItemMapper itemMapper;
 
@@ -26,13 +30,22 @@ public class ItemsService
      <p>添加一个需要收集的表名</p>
      <p>自动创建一个表</p>
     */
-    public void addItems(String titleName, List<Map<String,String>> items)
+    public void addItems(String titleName, Map<String,String> items)
     {
         Title title=new Title(titleName, Calendar.getInstance().getTimeInMillis());
         itemMapper.addTitle(title);
         int titleId=title.getId();
-        itemMapper.addItems(titleId,items);
-        peopMapper.createTable(titleName,items);
+        List<Map<String,String>> list=new ArrayList<>();
+        Map<String,String> map;
+        for(Map.Entry<String,String> entry:items.entrySet())
+        {
+            map=new HashMap<>();
+            map.put(ITEM_NAME,entry.getKey());
+            map.put(ITEM_TYPE,entry.getValue());
+            list.add(map);
+        }
+        itemMapper.addItems(titleId,list);
+        peopMapper.createTable(titleName,list);
     }
 
 

@@ -9,9 +9,9 @@
     </insert>
 
     <insert id="addItems">
-        insert into colitem(title_id,title_name,title_type)
-        <foreach collection="items" separator="," item="item">
-            values(#{id},#{item.itemName},#{item.itemType})
+        insert into colitem(title_id,item_name,item_type)
+        <foreach collection="items" open="values" separator="," item="item">
+            (#{id},#{item.itemName},#{item.itemType})
         </foreach>
     </insert>
 

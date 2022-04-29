@@ -21,8 +21,7 @@ import java.util.*;
 public class ItemController
 {
     private final String TITLE_FIELD_NAME="title";
-    private final String ITEM_NAME="itemName";
-    private final String ITEM_TYPE="itemType";
+
 
     @Autowired
     private ItemsService itemsService;
@@ -49,16 +48,7 @@ public class ItemController
             return new ResponseEntity<>(1,"未上传param:title或item",null);
         }
         items.remove(TITLE_FIELD_NAME);
-        List<Map<String,String>> addData=new ArrayList<>();
-        Map<String,String> map;
-        for(Map.Entry<String,String> entry:items.entrySet())
-        {
-            map=new HashMap<>();
-            map.put(ITEM_NAME,entry.getKey());
-            map.put(ITEM_TYPE,entry.getValue());
-            addData.add(map);
-        }
-        itemsService.addItems(titleString,addData);
+        itemsService.addItems(titleString,items);
         return new ResponseEntity<>(200,"添加成功！",null);
     }
 

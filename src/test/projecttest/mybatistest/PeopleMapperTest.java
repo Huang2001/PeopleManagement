@@ -1,6 +1,7 @@
 package projecttest.mybatistest;
 
 import cn.edu.ecut.mapper.PeopMapper;
+import cn.edu.ecut.pojo.exceptions.FieldNotMatchException;
 import cn.edu.ecut.service.ItemsService;
 import cn.edu.ecut.service.mapperimp.PeopMapperImp;
 import org.junit.jupiter.api.Test;
@@ -32,15 +33,17 @@ public class PeopleMapperTest
     @Test
     public void addItemsTest()
     {
-        List<Map<String,String>> items=new ArrayList<>();
-        Map<String,String> map1=new HashMap<>();
-        map1.put("itemName","体温");
-        map1.put("itemType","text");
-        items.add(map1);
-        Map<String,String> map2=new HashMap<>();
-        map2.put("itemName","是否感冒");
-        map2.put("itemType","text");
-        items.add(map2);
-        itemsService.addItems("每日打卡",items);
+        Map<String,String> map=new HashMap<>();
+        map.put("体温","text");
+        map.put("是否感冒","text");
+        itemsService.addItems("每日打卡",map);
+    }
+
+    @Test
+    public void renderItemsTest() throws FieldNotMatchException {
+        Map<String,String> map=new HashMap<>();
+        map.put("体温","36.7");
+        map.put("是否感冒","否");
+        itemsService.renderItem("每日打卡",4,"张三",map);
     }
 }

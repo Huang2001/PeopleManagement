@@ -4,18 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.ecut.mapper.PeopMapper">
     <update id="createTable">
-        create table if no exists ${tableName}
+        create table if not exists ${tableName}
         (
             user_id int,
             user_name varchar(20),
             render_date datetime,
         <foreach collection="fields" separator="," item="field">
             <choose>
-                <when test="field.type=='text'">
-                    ${field.name} varchar(100)
+                <when test="field.itemType=='text'">
+                    ${field.itemName} varchar(100)
                 </when>
                 <otherwise>
-                    ${field.name} varchar(60)
+                    ${field.itemName} varchar(60)
                 </otherwise>
             </choose>
         </foreach>

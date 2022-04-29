@@ -33,4 +33,10 @@ public class MybatisTest {
         System.out.println(set.getString(1));
 
     }
+
+    @Test
+    public void test2()
+    {
+
+    }
 }
