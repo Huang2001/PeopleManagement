@@ -40,7 +40,6 @@ public class ItemController
      * @return
      * @throws NotFoundSupportedResponseEnumException
      */
-
     @RequestMapping(value = "addItem",consumes = "application/json")
     @ResponseBody
     public ResponseEntity<String> addItem(@RequestBody Map<String,String> items) throws NotFoundSupportedResponseEnumException {
@@ -77,6 +76,7 @@ public class ItemController
     }
 
 
+
     /**
      * 保存用户提交的收集信息
      *
@@ -99,6 +99,10 @@ public class ItemController
         itemsService.renderItem(tableName,userId,userName,renderItem);
         return new ResponseEntity<>(200,"提交数据成功！",null);
     }
+
+
+
+
 
 
 }

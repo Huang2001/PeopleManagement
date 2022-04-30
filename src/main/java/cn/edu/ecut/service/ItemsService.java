@@ -5,6 +5,7 @@ import cn.edu.ecut.mapper.PeopMapper;
 import cn.edu.ecut.pojo.Title;
 import cn.edu.ecut.pojo.exceptions.FieldNotMatchException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
@@ -53,6 +54,7 @@ public class ItemsService
      * 添加用户提交的数据到指定的收集表中
      * @throws
      */
+    @Transactional
     public void renderItem(String tableName,int userId,String userName,Map<String,String> data) throws FieldNotMatchException {
         List<Object> renderData=new ArrayList<>();
         renderData.add(userId);

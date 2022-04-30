@@ -1,5 +1,6 @@
 package cn.edu.ecut.controller;
 
+import cn.edu.ecut.mapper.MessageMapper;
 import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import cn.edu.ecut.pojo.ResponseEntity;
 import cn.edu.ecut.service.mapperimp.MessageMapperImp;
@@ -10,14 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class MessageController
 {
-    @Autowired
-    private MessageMapperImp messageMapperImp;
+    @Resource(name = "messageMapperImp")
+    private MessageMapper messageMapper;
 
     private Logger log= LoggerFactory.getLogger(MessageController.class);
 
@@ -32,7 +34,7 @@ public class MessageController
            responseEntity=new ResponseEntity(500,"服务器请求失败,请重新登入！",null);
            return responseEntity;
        }
-       List<String> list=messageMapperImp.queryMsg(account);
+       List<String> list=messageMapper.queryMsg(account);
        responseEntity=new ResponseEntity(200,null,list);
        return responseEntity;
     }
