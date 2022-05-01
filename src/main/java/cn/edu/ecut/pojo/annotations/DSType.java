@@ -1,4 +1,4 @@
-package cn.edu.ecut.pojo;
+package cn.edu.ecut.pojo.annotations;
 
 
 import cn.edu.ecut.config.mybatisconfig.DataSourceType;

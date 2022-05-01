@@ -1,6 +1,6 @@
 package cn.edu.ecut.service.mapperimp;
 
-import cn.edu.ecut.mapper.MessageMapper;
+import cn.edu.ecut.mapper.managemapper.MessageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

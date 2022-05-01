@@ -13,7 +13,15 @@ import javax.sql.DataSource;
 public class TransactionConfig
 {
     @Bean
-    public DataSourceTransactionManager transactionManager(@Qualifier("dataSource") DataSource dataSource)
+    public DataSourceTransactionManager transactionManager(@Qualifier("manageDS") DataSource dataSource)
+    {
+        DataSourceTransactionManager transactionManager=new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
+
+    @Bean
+    public DataSourceTransactionManager peopleTransactionManager(@Qualifier("peopleDS")DataSource dataSource)
     {
         DataSourceTransactionManager transactionManager=new DataSourceTransactionManager();
         transactionManager.setDataSource(dataSource);

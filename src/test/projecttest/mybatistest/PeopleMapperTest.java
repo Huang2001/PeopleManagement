@@ -1,17 +1,14 @@
 package projecttest.mybatistest;
 
-import cn.edu.ecut.mapper.PeopMapper;
+import cn.edu.ecut.mapper.peoplemapper.PeopMapper;
 import cn.edu.ecut.pojo.exceptions.FieldNotMatchException;
 import cn.edu.ecut.service.ItemsService;
-import cn.edu.ecut.service.mapperimp.PeopMapperImp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @SpringJUnitConfig(locations = "classpath:spring/applicationContext-hhl.xml")
@@ -44,6 +41,7 @@ public class PeopleMapperTest
         Map<String,String> map=new HashMap<>();
         map.put("体温","36.7");
         map.put("是否感冒","否");
+        itemsService.renderItem("每日打卡",4,"张三",map);
         itemsService.renderItem("每日打卡",4,"张三",map);
     }
 }

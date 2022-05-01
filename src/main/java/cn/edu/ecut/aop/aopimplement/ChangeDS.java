@@ -1,21 +1,17 @@
-package cn.edu.ecut.aop;
+package cn.edu.ecut.aop.aopimplement;
 
-import cn.edu.ecut.config.mybatisconfig.DataSourceType;
 import cn.edu.ecut.config.mybatisconfig.DynamicDataSource;
-import cn.edu.ecut.pojo.DSType;
+import cn.edu.ecut.pojo.annotations.DSType;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-
-import java.lang.annotation.Annotation;
 
 /**
  * @author huanghl
+ * @deprecated
  */
-@Configuration
-@EnableAspectJAutoProxy
-@Aspect
+//@Configuration
+//@EnableAspectJAutoProxy
+//@Aspect
 public class ChangeDS
 {
     @Pointcut("within(cn.edu.ecut.service.mapperimp.*)")

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.ecut.mapper.PeopMapper">
+<mapper namespace="cn.edu.ecut.mapper.peoplemapper.PeopMapper">
     <update id="createTable">
-        create table if not exists ${tableName}
+        create table ${tableName}
         (
             user_id int,
             user_name varchar(20),

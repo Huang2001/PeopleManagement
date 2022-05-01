@@ -1,6 +1,6 @@
 package cn.edu.ecut.controller;
 
-import cn.edu.ecut.mapper.PeopMapper;
+import cn.edu.ecut.mapper.peoplemapper.PeopMapper;
 import cn.edu.ecut.pojo.People;
 import cn.edu.ecut.pojo.ResponseEntity;
 import cn.edu.ecut.pojo.exceptions.FieldNotMatchException;

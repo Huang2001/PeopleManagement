@@ -30,7 +30,7 @@ public class DruidDataSourceConfig
         return (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
     }
 
-    @Bean
+    /*@Bean
     public DataSource dataSource(@Qualifier("manageDS") DruidDataSource manageDS,@Qualifier("peopleDS") DruidDataSource peopleDS )
     {
         DynamicDataSource dataSource=new DynamicDataSource();
@@ -39,7 +39,7 @@ public class DruidDataSourceConfig
         dsMap.put(DataSourceType.PEOPLE,peopleDS);
         dataSource.setTargetDataSources(dsMap);
         return dataSource;
-    }
+    }*/
 
 
 

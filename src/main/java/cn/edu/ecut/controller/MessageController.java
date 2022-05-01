@@ -1,12 +1,10 @@
 package cn.edu.ecut.controller;
 
-import cn.edu.ecut.mapper.MessageMapper;
+import cn.edu.ecut.mapper.managemapper.MessageMapper;
 import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import cn.edu.ecut.pojo.ResponseEntity;
-import cn.edu.ecut.service.mapperimp.MessageMapperImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

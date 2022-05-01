@@ -1,6 +1,6 @@
 package cn.edu.ecut.service.mapperimp;
 
-import cn.edu.ecut.mapper.PeopleMapper;
+import cn.edu.ecut.mapper.managemapper.PeopleMapper;
 import cn.edu.ecut.pojo.People;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

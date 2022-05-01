@@ -1,6 +1,6 @@
 package cn.edu.ecut.service.mapperimp;
 
-import cn.edu.ecut.mapper.GoodsMapper;
+import cn.edu.ecut.mapper.managemapper.GoodsMapper;
 import cn.edu.ecut.pojo.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,17 +1,16 @@
-package cn.edu.ecut.mapper;
+package cn.edu.ecut.mapper.peoplemapper;
 
 import cn.edu.ecut.config.mybatisconfig.DataSourceType;
-import cn.edu.ecut.pojo.DSType;
+import cn.edu.ecut.pojo.annotations.DSType;
+import cn.edu.ecut.pojo.annotations.PeopleDataBase;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.type.Alias;
 
-import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @DSType(type = DataSourceType.PEOPLE)
-@Alias("peopMapper")
+@PeopleDataBase
 public interface PeopMapper
 {
     public void createTable(@Param("tableName")String tableName, @Param("fields")List<Map<String,String>> fields);

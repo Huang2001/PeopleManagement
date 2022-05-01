@@ -23,11 +23,9 @@ public class MybatisConfig {
 
     @Autowired
     @Bean
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
-        System.out.println("create factory!");
+    public SqlSessionFactory manageSqlSessionFactory(@Qualifier("manageDS") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean factoryBean=new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
-        //factoryBean.setTypeAliasesPackage("cn.edu.ecut.mapper");
         ClassPathResource resource=new ClassPathResource("mybatis-test.xml");
         factoryBean.setConfigLocation(resource);
         PageInterceptor interceptor=new PageInterceptor();
@@ -39,10 +37,32 @@ public class MybatisConfig {
     }
 
     @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer()
+    public MapperScannerConfigurer manageMapperScanner()
     {
         MapperScannerConfigurer configurer=new MapperScannerConfigurer();
-        configurer.setBasePackage("cn.edu.ecut.mapper");
+        configurer.setBasePackage("cn.edu.ecut.mapper.managemapper");
+        configurer.setSqlSessionFactoryBeanName("manageSqlSessionFactory");
+        return configurer;
+    }
+
+
+    @Autowired
+    @Bean
+    public SqlSessionFactory peopleSqlSessionFactory(@Qualifier("peopleDS") DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean factoryBean=new SqlSessionFactoryBean();
+        factoryBean.setDataSource(dataSource);
+        ClassPathResource resource=new ClassPathResource("mybatis-test.xml");
+        factoryBean.setConfigLocation(resource);
+        return factoryBean.getObject();
+    }
+
+
+    @Bean
+    public MapperScannerConfigurer peopleMapperScanner()
+    {
+        MapperScannerConfigurer configurer=new MapperScannerConfigurer();
+        configurer.setBasePackage("cn.edu.ecut.mapper.peoplemapper");
+        configurer.setSqlSessionFactoryBeanName("peopleSqlSessionFactory");
         return configurer;
     }
 

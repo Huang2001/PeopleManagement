@@ -1,4 +1,4 @@
-package cn.edu.ecut.mapper;
+package cn.edu.ecut.mapper.managemapper;
 
 import cn.edu.ecut.pojo.Goods;
 import org.apache.ibatis.annotations.Mapper;

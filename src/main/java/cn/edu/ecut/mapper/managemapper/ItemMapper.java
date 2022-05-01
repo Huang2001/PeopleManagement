@@ -1,11 +1,8 @@
-package cn.edu.ecut.mapper;
+package cn.edu.ecut.mapper.managemapper;
 
-import cn.edu.ecut.config.mybatisconfig.DataSourceType;
-import cn.edu.ecut.pojo.DSType;
 import cn.edu.ecut.pojo.Title;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
