@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 import java.util.*;
 
 @Controller
-@RequestMapping("/item")
+@RequestMapping("/items")
 public class ItemController
 {
     private final String TITLE_FIELD_NAME="title";
@@ -40,7 +40,7 @@ public class ItemController
      * @return
      * @throws NotFoundSupportedResponseEnumException
      */
-    @RequestMapping(value = "addItem",consumes = "application/json")
+    @RequestMapping(value = "addItem",method = RequestMethod.POST,consumes = "application/json")
     @ResponseBody
     public ResponseEntity<String> addItem(@RequestBody Map<String,String> items) throws NotFoundSupportedResponseEnumException {
         String titleString=items.get(TITLE_FIELD_NAME);
@@ -61,7 +61,7 @@ public class ItemController
      * @return
      * @throws NotFoundSupportedResponseEnumException
      */
-    @RequestMapping(value = "descItems")
+    @PostMapping(value = "descItems")
     @ResponseBody
     public ResponseEntity<List<Map<String,String>>> descItems(@RequestParam("title")String tableName) throws NotFoundSupportedResponseEnumException {
         ResponseEntity<List<Map<String,String>>> response=null;

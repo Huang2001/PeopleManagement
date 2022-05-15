@@ -4,6 +4,10 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 
 
+/**
+ * @author huanghl
+ * @deprecated
+ */
 public class DynamicDataSource extends AbstractRoutingDataSource
 {
     private static ThreadLocal<DataSourceType> dsType=new ThreadLocal<DataSourceType>()

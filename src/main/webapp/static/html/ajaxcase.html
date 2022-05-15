@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <input type="button" onclick="postfun()">
+</body>
+
+<script src="../js/jquery3.6.js"></script>
+<script type="text/javascript">
+    function postfun() {
+        $.ajax({
+            url:"/PeopleManagement/items/descItems",    //请求的url地址
+            type:"POST",
+            dataType:"json",   //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{
+                title:"每日打卡"
+            },    //参数值
+            success:function(req){
+                if(req.code==200)
+                {
+                    for(var i=0;i<req.data.length;i++)
+                    {
+                        var map=req.data[i];
+                        for(key in map)
+                        {
+                            alert(key+":"+map[key])
+                        }
+                    }
+                }
+                else
+                {
+                    alert(req.message);
+                }
+            },
+            error:function(){
+                //请求出错处理
+                alert("请求出错！");
+            }
+        });
+    }
+
+
+
+
+
+
+    /*function postfun() {
+        $.ajax({
+            url:"/PeopleManagement/items/addItem",    //请求的url地址
+            type:"POST",
+            contentType:"application/json",
+            dataType:"json",   //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:JSON.stringify({
+                title:"每日打卡",
+                体温:"text",
+                是否患有感冒等症状:"text"
+            }),    //参数值
+            success:function(req){
+                if(req.code==200)
+                {
+                    alert("添加成功！");
+                }
+                else
+                {
+                    alert(req.message);
+                }
+            },
+            error:function(){
+                //请求出错处理
+                alert("请求出错！");
+            }
+        });
+    }*/
+</script>
+</html>

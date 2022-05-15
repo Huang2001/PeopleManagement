@@ -39,13 +39,13 @@ public class AddItemsTransactionInterceptor
         try
         {
             joinPoint.proceed();
-
             transactionManager2.commit(status2);
             transactionManager1.commit(status1);
-        } catch (Throwable throwable) {
+        } catch (Throwable throwable)
+        {
             throwable.printStackTrace();
-            transactionManager1.rollback(status1);
             transactionManager2.rollback(status2);
+            transactionManager1.rollback(status1);
         }
     }
 }
