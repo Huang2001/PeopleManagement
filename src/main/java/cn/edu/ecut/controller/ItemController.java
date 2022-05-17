@@ -67,7 +67,7 @@ public class ItemController
         ResponseEntity<List<Map<String,String>>> response=null;
         if(StringUtils.hasLength(tableName))
         {
-            List<Map<String,String>> result=peopMapper.descTable(tableName);
+            List<Map<String,String>> result=peopMapper.queryTable(tableName);
             response=new ResponseEntity<>(200,"查询成功！",result);
             return response;
         }
@@ -99,6 +99,12 @@ public class ItemController
         itemsService.renderItem(tableName,userId,userName,renderItem);
         return new ResponseEntity<>(200,"提交数据成功！",null);
     }
+
+
+
+    /**
+     *
+     */
 
 
 
