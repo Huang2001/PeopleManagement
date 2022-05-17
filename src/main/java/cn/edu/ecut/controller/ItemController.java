@@ -1,14 +1,18 @@
 package cn.edu.ecut.controller;
 
+import cn.edu.ecut.mapper.managemapper.ItemMapper;
 import cn.edu.ecut.mapper.peoplemapper.PeopMapper;
 import cn.edu.ecut.pojo.People;
 import cn.edu.ecut.pojo.ResponseEntity;
+import cn.edu.ecut.pojo.Title;
 import cn.edu.ecut.pojo.exceptions.FieldNotMatchException;
 import cn.edu.ecut.pojo.exceptions.NotFoundSupportedResponseEnumException;
 import cn.edu.ecut.service.ItemsService;
+import cn.edu.ecut.service.mapperimp.ItemMapperImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +32,10 @@ public class ItemController
 
     @Resource(name = "peopMapperImp")
     private PeopMapper peopMapper;
+
+    @Qualifier("itemMapperImp")
+    @Autowired
+    private ItemMapper itemMapper;
 
     private Logger logger= LoggerFactory.getLogger(ItemController.class);
 
@@ -105,6 +113,12 @@ public class ItemController
     /**
      *
      */
+    @GetMapping("queryTables")
+    @ResponseBody
+    public ResponseEntity<List<Title>> queryTables() throws NotFoundSupportedResponseEnumException {
+        List<Title> data=itemMapper.queryTitles();
+        return new ResponseEntity<>(200,null,data);
+    }
 
 
 
