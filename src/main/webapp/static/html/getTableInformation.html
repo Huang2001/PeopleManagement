@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>搜索</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+            rel="stylesheet"
+            href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://at.alicdn.com/t/font_3345561_jds2xsq8wdd.css?spm=a313x.7781069.1998910419.116&file=font_3345561_jds2xsq8wdd.css"
+    />
+    <style>
+        .jumbotron h1 a {
+            text-decoration: none;
+            color: black;
+        }
+        .jumbotron p a {
+            text-decoration: none;
+            color: black;
+        }
+        .container {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom: 0">
+    <h1><a href="index.html">疫情人员管理系统</a></h1>
+    <p>疫情终会过去，静候春暖花开。</p>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">导航</a>
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapsibleNavbar"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">用户管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">角色管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">收集信息</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#"
+                ><strong>信息查看</strong></a
+                >
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">退出</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="margin-top: 30px">
+    <div class="col-sm-12">
+        <form class="form-inline" action="/action_page.php">
+            <label for="sel1">选择表: </label>
+            <select class="form-control" id="sel1">
+                <option>今日</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+            <label for="userPrivilege" class="mb-2 mr-sm-2">权限名称: </label>
+            <input
+                    type="text"
+                    class="form-control mb-2 mr-sm-2"
+                    id="userPrivilege"
+                    name="privilege"
+            />
+            <button type="submit" class="btn btn-primary mb-2 mr-2 ml-2">
+                <i class="iconfont icon-fangdajing"></i> 搜索
+            </button>
+            <button
+                    type="button"
+                    class="btn btn-warning mb-2"
+                    onclick="clearContext()"
+            >
+                <i class="iconfont icon-shuaxin"></i>重置
+            </button>
+        </form>
+    </div>
+    <div>
+        <a href="#" class="btn btn-success"
+        ><i class="iconfont icon-xinzeng"></i>新增</a
+        >
+    </div>
+    <table class="table table-hover mt-2">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>角色名称</th>
+            <th>权限名称</th>
+            <th></th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <ul class="pagination float-right">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom: 0">
+    <p>
+        Copyright © 2022
+        <a href="https://github.com/Huang2001/PeopleManagement"
+        >疫情人员管理系统</a
+        >
+    </p>
+</div>
+<script>
+    var userName = document.getElementById("userName");
+    var userPrivilege = document.getElementById("userPrivilege");
+    function clearContext() {
+        // alert("hello,world");
+        // userName.innerTeHTMLxt = "hello,world";
+        userName.value = "";
+        userPrivilege.value = "";
+    }
+</script>
+</body>
+</html>
