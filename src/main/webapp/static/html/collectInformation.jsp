@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Windows
+  Date: 2022/5/19
+  Time: 20:46
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +37,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom: 0">
-    <h1><a href="index.html">疫情人员管理系统</a></h1>
+    <h1><a class="nav-link" href="${pageContext.request.contextPath}/people/goMain">疫情人员管理系统</a></h1>
     <p>疫情终会过去，静候春暖花开。</p>
 </div>
 
@@ -46,10 +54,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">首页</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/people/goMain?usern">首页</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">用户管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/people/goPeopleView">用户管理</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#"
@@ -57,7 +65,7 @@
                 >
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">查询信息</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/getData.jsp">查询信息</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">退出</a>

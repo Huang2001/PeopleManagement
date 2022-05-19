@@ -1,8 +1,16 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Windows
+  Date: 2022/5/19
+  Time: 16:51
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ajax测试</title>
+    <title>查询信息</title>
     <!--bootstrap4 dependence-->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
@@ -23,7 +31,7 @@
 <body>
 <!--  调用ajax函数-->
 <div class="jumbotron text-center" style="margin-bottom: 0">
-    <h1><a href="index.html">疫情人员管理系统</a></h1>
+    <h1><a class="nav-link" href="${pageContext.request.contextPath}/people/goMain">疫情人员管理系统</a></h1>
     <p>疫情终会过去，静候春暖花开。</p>
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -39,13 +47,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">首页</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/people/goMain">首页</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">用户管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/people/goPeopleView">用户管理</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">收集信息</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/collectInformation.jsp">收集信息</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#"
@@ -60,13 +68,14 @@
 </nav>
 <div class="container">
     <h1>
-        查询数据<span class="badge bg-primary">管理员<small>FIND</small></span>
+        查询信息<span class="badge bg-primary">管理员<small>FIND</small></span>
     </h1>
     <label for="tableName">表名：</label>
     <input type="text" class="form-control" id="tableName" name="tableName" placeholder="清输入你要查找的表名">
     <button class="btn btn-primary mb-3 mt-3" title="生成表格" onclick="newTable()">生成表格</button>
-    <!--    <button onclick="postfun()" class="btn bg-primary">生成表格</button>-->
-    <table class="table table-striped table-hover table-bordered" id="myTable">
+    <%--TODO: 根据表名获得数据然后添加数据,在新的页面    --%>
+    <button class="btn btn-success" style="display: none" id="newInfo">新增</button>
+    <table class="table table-striped table-hover " id="myTable">
         <thead></thead>
         <tbody></tbody>
     </table>
@@ -85,6 +94,8 @@
         // 获得表格名字
         var tableName = document.getElementById("tableName").value;
         var tableData = {title: tableName};
+        var info = document.getElementById("newInfo");
+        $("#newInfo").show();
         console.log(tableData)
         $.ajax({
             url: "/PeopleManagement/items/descItems",    //请求的url地址
