@@ -162,7 +162,9 @@
         var rows = myTable.rows;
         for (var i = 1; i < rows.length; i++) {
             var cells = rows[i].cells;
-            var testData = {"title": titleName, "信息名称":cells[0].innerHTML, "信息类型":cells[1].innerHTML};
+            var testData = {"title": titleName};
+            testData[cells[0].innerHTML] = cells[1].innerHTML;
+            alert(String(testData));
             $.ajax({
                 url: "/PeopleManagement/items/addItem",    //请求的url地址
                 type: "POST",
