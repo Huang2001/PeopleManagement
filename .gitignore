@@ -10,3 +10,5 @@
 *.jar
 *.log
 *.class
+.idea
+.idea/dataSources/bb0bdd40-f424-4bf6-9747-626fc2b8c0d0.xml

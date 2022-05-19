@@ -2,77 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ajax测试</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="../js/jquery3.6.js"></script>
+    <script type="text/javascript">
+        // $(function () {
+        //     $.ajax({
+        //         url: "/PeopleManagement/items/descItems",    //请求的url地址
+        //         type: "POST",
+        //         dataType: "json",   //返回格式为json
+        //         async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+        //         data: {
+        //             title: "每日打卡"
+        //         },    //参数值
+        //         success: function (data) {
+        //             console.log(data);
+        //             var keys = Object.keys(data.data[0])
+        //             console.log(keys)
+        //             // TODO: 生成表格头
+        //             $("#myTable>thead").append("<tr>")
+        //             for (let i = 0; i < keys.length; i++) {
+        //                 $("#myTable>thead").append("<th>" + keys[i] + "</th>")
+        //             }
+        //             $("#myTable>thead").append("</tr>")
+        //             for (let i = 0; i < data.data.length; i++) {
+        //                 var values = Object.values(data.data[i]);
+        //                 console.log(values);
+        //                 $("#myTable>tbody").append("<tr>")
+        //                 for (let j = 0; j < values.length; j++) {
+        //                     $("#myTable>tbody").append(
+        //                         "<td>" + values[j] + "</td>"
+        //                     )
+        //                 }
+        //                 $("#myTable>tbody").append("</tr>")
+        //                 // $("#myTable>tbody").append("<tr>" +
+        //                 //     "<td>" + data.data[i]["user_id"] + "</td>" +
+        //                 //     "<td>" + data.data[i]["user_name"] + "</td>" +
+        //                 //     "<td>" + data.data[i]["render_date"] + "</td>" +
+        //                 //     "<td>" + data.data[i]["是否患有感冒等症状"] + "</td>" +
+        //                 //     "</tr>"
+        //                 // )
+        //             }
+        //         },
+        //         error: function () {
+        //             //请求出错处理
+        //             alert("请求出错！");
+        //         }
+        //     });
+        // })
+    </script>
 </head>
 <body>
- <input type="button" onclick="postfun()">
-</body>
-
-<script src="../js/jquery3.6.js"></script>
-<script type="text/javascript">
-    function postfun() {
+<!--  调用ajax函数-->
+<div class="container">
+    <label for="tableName">表名</label>
+    <input type="text" class="form-control" id="tableName">
+    <button class="btn btn-primary" onclick="newTable()">生成表格</button>
+    <!--    <button onclick="postfun()" class="btn bg-primary">生成表格</button>-->
+    <table class="table table-striped table-hover table-bordered" id="myTable">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script>
+    // TODO: 根据表名生成对应数据表格
+    function newTable() {
+        // 获得表格名字
+        var tableName = document.getElementById("tableName").value;
+        var tableData = {title: tableName};
+        console.log(tableData)
         $.ajax({
-            url:"/PeopleManagement/items/descItems",    //请求的url地址
-            type:"POST",
-            dataType:"json",   //返回格式为json
-            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
-            data:{
-                title:"每日打卡"
+            url: "/PeopleManagement/items/descItems",    //请求的url地址
+            type: "POST",
+            dataType: "json",   //返回格式为json
+            async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data: {
+                "title": tableName
             },    //参数值
-            success:function(req){
-                if(req.code==200)
-                {
-                    for(var i=0;i<req.data.length;i++)
-                    {
-                        var map=req.data[i];
-                        alert(map['user_id'])
-
-                    }
+            success: function (data) {
+                console.log(data);
+                var keys = Object.keys(data.data[0])
+                console.log(keys)
+                // 每次生成前都需要清空表格
+                $("#myTable>thead").empty();
+                $("#myTable>tbody").empty();
+                // TODO: 生成表格头
+                $("#myTable>thead").append("<tr>")
+                for (let i = 0; i < keys.length; i++) {
+                    $("#myTable>thead").append("<th>" + keys[i] + "</th>")
                 }
-                else
-                {
-                    alert(req.message);
+                $("#myTable>thead").append("</tr>")
+                for (let i = 0; i < data.data.length; i++) {
+                    var values = Object.values(data.data[i]);
+                    console.log(values);
+                    $("#myTable>tbody").append("<tr>")
+                    for (let j = 0; j < values.length; j++) {
+                        $("#myTable>tbody").append(
+                            "<td>" + values[j] + "</td>"
+                        )
+                    }
+                    $("#myTable>tbody").append("</tr>")
                 }
             },
-            error:function(){
+            error: function () {
                 //请求出错处理
-                alert("请求出错！");
+                alert("没有这个" + tableName + "表格");
             }
         });
     }
 
-
-
-
-
-
-    /*function postfun() {
-        $.ajax({
-            url:"/PeopleManagement/items/addItem",    //请求的url地址
-            type:"POST",
-            contentType:"application/json",
-            dataType:"json",   //返回格式为json
-            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
-            data:JSON.stringify({
-                title:"每日打卡",
-                体温:"text",
-                是否患有感冒等症状:"text"
-            }),    //参数值
-            success:function(req){
-                if(req.code==200)
-                {
-                    alert("添加成功！");
-                }
-                else
-                {
-                    alert(req.message);
-                }
-            },
-            error:function(){
-                //请求出错处理
-                alert("请求出错！");
-            }
-        });
-    }*/
 </script>
+</body>
+
 </html>

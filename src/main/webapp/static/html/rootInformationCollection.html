@@ -164,7 +164,6 @@
             var cells = rows[i].cells;
             var testData = {"title": titleName};
             testData[cells[0].innerHTML] = cells[1].innerHTML;
-            alert(String(testData));
             $.ajax({
                 url: "/PeopleManagement/items/addItem",    //请求的url地址
                 type: "POST",
@@ -172,12 +171,9 @@
                 dataType: "json",   //返回格式为json
                 async: true,//请求是否异步，默认为异步，这也是ajax重要特性
                 data: JSON.stringify(testData),
-                // data: JSON.stringify(testData),
-                // data: JSON.stringify(toJson()),
                 success: function (data) {
                     if (data.code == 200) {
                         alert("yes！");
-                        console.log(data)
                     } else {
                         alert(data.message);
                     }
