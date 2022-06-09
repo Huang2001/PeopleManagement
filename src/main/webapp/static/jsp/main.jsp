@@ -1,10 +1,9 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <title>主页</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link
             rel="stylesheet"
             href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,15 +17,18 @@
             width: 200px;
             /* background: #aaa; */
         }
+
         .fakeimg img {
             border-radius: 50%;
             height: 200px;
             width: 200px;
         }
+
         .jumbotron h1 a {
             text-decoration: none;
             color: black;
         }
+
         .jumbotron p a {
             text-decoration: none;
             color: black;
@@ -35,7 +37,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom: 0">
-    <h1><a href="#">疫情人员管理系统</a></h1>
+    <h1><a class="nav-link" href="${pageContext.request.contextPath}/people/goMain">疫情人员管理系统</a></h1>
     <p>疫情终会过去，静候春暖花开。</p>
 </div>
 
@@ -52,19 +54,21 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="#"><strong>首页</strong></a>
+                <strong>
+                    <a class="nav-link text-white" href="${pageContext.request.contextPath}/people/goMain?usern">首页</a>
+                </strong>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/people/goPeopleView">用户管理</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">角色管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/collectInformation.jsp">收集信息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">部门管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/getData.jsp">查询信息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">退出</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/Login/goLogin">退出</a>
             </li>
         </ul>
     </div>
@@ -96,22 +100,22 @@
               </li>
             </ul> -->
             <div class="radio">
-                <label><input type="radio" name="optradio" checked /> 健康</label>
+                <label><input type="radio" name="optradio" checked/> 健康</label>
             </div>
             <div class="radio">
-                <label><input type="radio" name="optradio" /> 阳性</label>
+                <label><input type="radio" name="optradio"/> 阳性</label>
             </div>
             <div class="radio disabled">
-                <label><input type="radio" name="optradio" /> 确诊</label>
+                <label><input type="radio" name="optradio"/> 确诊</label>
             </div>
-            <hr class="d-sm-none" />
+            <hr class="d-sm-none"/>
         </div>
         <div class="col-sm-8">
             <h2>疫情人员管理系统</h2>
             <p>
                 一直想做一款后台管理系统，看了很多优秀的开源项目但是发现没有合适自己的。于是利用空闲休息时间开始自己写一套后台系统。如此有了疫情人员管理系统。，她可以用于所有的Web应用程序，如网站管理后台，网站会员中心，CMS，CRM，OA等等，当然，您也可以对她进行深度定制，以做出更强系统。所有前端后台代码封装过后十分精简易上手，出错概率低。同时支持移动客户端访问。系统会陆续更新一些实用功能。
             </p>
-            <br />
+            <br/>
             <h2>更新日志</h2>
             <ul>
                 <li>1.添加用户管理</li>

@@ -66,15 +66,13 @@
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" style="margin-top: 30px">
     <h1>
         查询信息<span class="badge bg-primary">管理员<small>FIND</small></span>
     </h1>
     <label for="tableName">表名：</label>
     <input type="text" class="form-control" id="tableName" name="tableName" placeholder="清输入你要查找的表名">
     <button class="btn btn-primary mb-3 mt-3" title="生成表格" onclick="newTable()">生成表格</button>
-    <%--TODO: 根据表名获得数据然后添加数据,在新的页面    --%>
-    <button class="btn btn-success" style="display: none" id="newInfo">新增</button>
     <table class="table table-striped table-hover " id="myTable">
         <thead></thead>
         <tbody></tbody>

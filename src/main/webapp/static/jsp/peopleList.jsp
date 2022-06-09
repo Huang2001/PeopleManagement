@@ -5,8 +5,8 @@
 <html lang="en">
 <head>
     <title>用户管理</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link
             rel="stylesheet"
             href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
@@ -19,37 +19,30 @@
             href="https://at.alicdn.com/t/font_3345561_jds2xsq8wdd.css?spm=a313x.7781069.1998910419.116&file=font_3345561_jds2xsq8wdd.css"
     />
     <style>
-        .fakeimg {
-            height: 200px;
-            width: 200px;
-            /* background: #aaa; */
-        }
-        .fakeimg img {
-            border-radius: 50%;
-            height: 200px;
-            width: 200px;
-        }
         .jumbotron h1 a {
             text-decoration: none;
             color: black;
         }
+
         .jumbotron p a {
             text-decoration: none;
             color: black;
         }
+
         table {
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
-        .container{
+
+        .container {
             margin-left: 10%;
         }
     </style>
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom: 0">
-    <h1><a href="index.html">疫情人员管理系统</a></h1>
+    <h1><a class="nav-link" href="${pageContext.request.contextPath}/people/goMain">疫情人员管理系统</a></h1>
     <p>疫情终会过去，静候春暖花开。</p>
 </div>
 
@@ -74,10 +67,10 @@
                 >
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">角色管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/collectInformation.jsp">收集信息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">部门管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/getData.jsp">查询信息</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/Login/goLogin">退出</a>
@@ -114,7 +107,7 @@
             </select>
             性别:
             <select name="gender" class="custom-select-sm ml-1">
-                <option  value="" selected>所有</option>
+                <option value="" selected>所有</option>
                 <option value="男" name="gender">男</option>
                 <option value="女" name="gender">女</option>
             </select>
@@ -174,7 +167,8 @@
                     <a href="${pageContext.request.contextPath}/people/goUpdate?id=${people.id}" class="btn btn-primary"
                     ><i class="iconfont icon-bianji"></i>编辑</a
                     >
-                    <a href="${pageContext.request.contextPath}/people/deletePeople?id=${people.id}" class="btn btn-danger"
+                    <a href="${pageContext.request.contextPath}/people/deletePeople?id=${people.id}"
+                       class="btn btn-danger"
                     ><i class="iconfont icon-shanchu"></i>删除</a
                     >
                 </td>
@@ -183,11 +177,19 @@
         </tbody>
     </table>
     <ul class="pagination float-right">
-        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/people/goPeopleView?page=1&username=${username}&address=${address}&gender=${gender}&state=${state}">首页</a></li>
-        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/people/goPeopleView?page=${pageInfo.pageNum-1}&address=${address}&gender=${gender}&state=${state}">上一页</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="${pageContext.request.contextPath}/people/goPeopleView?page=1&username=${username}&address=${address}&gender=${gender}&state=${state}">首页</a>
+        </li>
+        <li class="page-item"><a class="page-link"
+                                 href="${pageContext.request.contextPath}/people/goPeopleView?page=${pageInfo.pageNum-1}&address=${address}&gender=${gender}&state=${state}">上一页</a>
+        </li>
         <li class="page-item"><a class="page-link disabled" href="#">${pageInfo.pageNum}/共${pageInfo.pages}页</a></li>
-        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/people/goPeopleView?page=${pageInfo.pageNum+1}&address=${address}&gender=${gender}&state=${state}">下一页</a></li>
-        <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/people/goPeopleView?page=${pageInfo.pages}&username=${username}&address=${address}&gender=${gender}&state=${state}">尾页</a></li>
+        <li class="page-item"><a class="page-link"
+                                 href="${pageContext.request.contextPath}/people/goPeopleView?page=${pageInfo.pageNum+1}&address=${address}&gender=${gender}&state=${state}">下一页</a>
+        </li>
+        <li class="page-item"><a class="page-link"
+                                 href="${pageContext.request.contextPath}/people/goPeopleView?page=${pageInfo.pages}&username=${username}&address=${address}&gender=${gender}&state=${state}">尾页</a>
+        </li>
     </ul>
 </div>
 
@@ -200,9 +202,8 @@
 <script>
     var userName = document.getElementById("userName");
     var userAddress = document.getElementById("userAddress");
+
     function clearContext() {
-        // alert("hello,world");
-        // userName.innerTeHTMLxt = "hello,world";
         userName.value = "";
         userAddress.value = "";
     }

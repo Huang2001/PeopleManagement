@@ -25,7 +25,6 @@ public class PeopleController {
     @RequestMapping("/goMain")
     public String goMain(Model model){
 
-
         People people=peopleService.queryPeople("admin","123456");
         model.addAttribute("people",people);
         return "main";

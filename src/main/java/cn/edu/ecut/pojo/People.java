@@ -27,5 +27,5 @@ public class People {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date applicationTime;//申请时间
     private String roleName;//角色名
-    private String state;//申请时间
+    private String state;//用户状态
 }

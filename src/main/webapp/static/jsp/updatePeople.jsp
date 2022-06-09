@@ -17,16 +17,6 @@
     />
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
     <style>
-        .fakeimg {
-            height: 200px;
-            width: 200px;
-            /* background: #aaa; */
-        }
-        .fakeimg img {
-            border-radius: 50%;
-            height: 200px;
-            width: 200px;
-        }
         .jumbotron h1 a {
             text-decoration: none;
             color: black;
@@ -39,7 +29,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom: 0">
-    <h1><a href="index.html">疫情人员管理系统</a></h1>
+    <h1><a class="nav-link" href="${pageContext.request.contextPath}/people/goMain">疫情人员管理系统</a></h1>
     <p>疫情终会过去，静候春暖花开。</p>
 </div>
 
@@ -64,10 +54,10 @@
                 >
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">角色管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/collectInformation.jsp">收集信息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">部门管理</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/static/html/getData.jsp">查询信息</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/Login/goLogin">退出</a>
